@@ -7,8 +7,10 @@ import * as _ from 'lodash';
 
 class Singleton {
   private static instance: Singleton;
+  name: string;
 
   constructor() {
+    this.name = 'seolhun';
     Singleton.instance = this;
   }
 
@@ -17,8 +19,25 @@ class Singleton {
     return this.instance;
   }
 
+  static set setInstance(this: Singleton) {
+    Singleton.instance = this;
+  }
+
+  get getName() {
+    return this.name;
+  }
+
+  set setName(name: string) {
+    this.name = name;
+  }
+
   static printInstance() {
     console.log(this.instance);
+  }
+
+  printName() {
+    const s = new Singleton();
+    console.log(s.name);
   }
 
   static lazyFunction = _.debounce((fn: (query?: string) => void) => {
@@ -26,7 +45,69 @@ class Singleton {
   }, 1000, { maxWait: 1000 });
 }
 
+const lazyFunction = _.debounce((fn: (query?: string) => void) => {
+  fn.call(fn);
+}, 1000, { maxWait: 1000 });
+
 export default Singleton;
+
+```
+
+```javascript
+define(["require", "exports", "lodash"], function (require, exports, _) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var Singleton = /** @class */ (function () {
+        function Singleton() {
+            this.name = 'seolhun';
+            Singleton.instance = this;
+        }
+        Object.defineProperty(Singleton, "getInstance", {
+            get: function () {
+                this.printInstance();
+                return this.instance;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Singleton, "setInstance", {
+            set: function () {
+                Singleton.instance = this;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Singleton.prototype, "getName", {
+            get: function () {
+                return this.name;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Singleton.prototype, "setName", {
+            set: function (name) {
+                this.name = name;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Singleton.printInstance = function () {
+            console.log(this.instance);
+        };
+        Singleton.prototype.printName = function () {
+            var s = new Singleton();
+            console.log(s.name);
+        };
+        Singleton.lazyFunction = _.debounce(function (fn) {
+            fn.call(fn);
+        }, 1000, { maxWait: 1000 });
+        return Singleton;
+    }());
+    var lazyFunction = _.debounce(function (fn) {
+        fn.call(fn);
+    }, 1000, { maxWait: 1000 });
+    exports.default = Singleton;
+});
 ```
 
 ## 내용
