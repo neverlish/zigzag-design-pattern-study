@@ -45,12 +45,7 @@ class Singleton {
   }, 1000, { maxWait: 1000 });
 }
 
-const lazyFunction = _.debounce((fn: (query?: string) => void) => {
-  fn.call(fn);
-}, 1000, { maxWait: 1000 });
-
 export default Singleton;
-
 ```
 
 ```javascript
@@ -62,6 +57,7 @@ define(["require", "exports", "lodash"], function (require, exports, _) {
             this.name = 'seolhun';
             Singleton.instance = this;
         }
+
         Object.defineProperty(Singleton, "getInstance", {
             get: function () {
                 this.printInstance();
@@ -70,6 +66,7 @@ define(["require", "exports", "lodash"], function (require, exports, _) {
             enumerable: true,
             configurable: true
         });
+
         Object.defineProperty(Singleton, "setInstance", {
             set: function () {
                 Singleton.instance = this;
@@ -77,6 +74,7 @@ define(["require", "exports", "lodash"], function (require, exports, _) {
             enumerable: true,
             configurable: true
         });
+
         Object.defineProperty(Singleton.prototype, "getName", {
             get: function () {
                 return this.name;
@@ -84,6 +82,7 @@ define(["require", "exports", "lodash"], function (require, exports, _) {
             enumerable: true,
             configurable: true
         });
+
         Object.defineProperty(Singleton.prototype, "setName", {
             set: function (name) {
                 this.name = name;
@@ -91,22 +90,21 @@ define(["require", "exports", "lodash"], function (require, exports, _) {
             enumerable: true,
             configurable: true
         });
+
         Singleton.printInstance = function () {
             console.log(this.instance);
         };
+
         Singleton.prototype.printName = function () {
             var s = new Singleton();
             console.log(s.name);
         };
+
         Singleton.lazyFunction = _.debounce(function (fn) {
             fn.call(fn);
         }, 1000, { maxWait: 1000 });
         return Singleton;
     }());
-    var lazyFunction = _.debounce(function (fn) {
-        fn.call(fn);
-    }, 1000, { maxWait: 1000 });
-    exports.default = Singleton;
 });
 ```
 
