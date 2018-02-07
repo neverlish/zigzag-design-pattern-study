@@ -1,4 +1,4 @@
-## 싱글톤 패턴 Singleton Pattern
+## 디자인 패턴 Design Pattern
 2018/02/07(수) - Jinho
 
 ---
