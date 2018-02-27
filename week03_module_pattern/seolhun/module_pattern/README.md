@@ -7,6 +7,18 @@
 자바스크립트에서의 모듈 패턴은 전역 영역에서 특정 변수영역을 보호하기 위해 단일 객체 안의 public/private의 변수를 포함할 수 있는 각 클래스 형식의 개념을 구현하는데 사용됩니다.
 이 패턴으로 추가적인 자바스크립트 객체가 다른 스크립트의 객체와 충돌하는 것을 줄여줄 수 있습니다.
 
+#### 자바스크립트에서 모듈 패턴을 구현하는 방법
+- Object literal notation
+```typescript
+const Module = {
+    first: first,
+    name: name,
+}
+```
+- AMD modules
+- CommonJS modules
+- ECMAScript Harmony modules
+
 ## Examples
 #### TypeScript
 - Before Module Pattern
@@ -67,7 +79,7 @@ __proto__: {
     valueOf: function valueOf()
 }
 ```
-1. prototype 속성은 함수만 가지고 있던 것과는 달리(Module.prototype), __proto__속성은 모든 객체가 가지고 있는 속성입니다.
+1. **prototype 속성은 함수만 가지고 있던 것과는 달리(Module.prototype)**, __proto__속성은 모든 객체가 가지고 있는 속성입니다.
 ```typescript
 const a = 3 
 a // 3
