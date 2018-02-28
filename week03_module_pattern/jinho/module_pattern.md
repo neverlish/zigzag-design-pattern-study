@@ -75,7 +75,7 @@ console.log(info.being); // being
 ```
 
 ---
-
+```
 var app = app || {};
 app.module = (function() {
   var count = 0;
@@ -90,7 +90,7 @@ app.module = (function() {
 })();
 console.log(app.module.increase()); // 1
 console.log(app.module.decrease()); // 0
-
+```
 ---
 
 ### 익명함수 내부에서 전역변수를 사용하는 방법
