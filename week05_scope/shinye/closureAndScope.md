@@ -21,7 +21,7 @@ var scope = "global";
 function f(){
   console.log(scope); // "global" 아닌 undefined 출력. 아래에 지역변수로 선언 및 할당된 scope가 할당문
   // 을 제외하고 호이스팅 되었기 때문에 선언은 되었지만 할당값은 없는 undefined가 출력
-  scope = "local"; // 이제 scope변수가 초기화되고 제대로 된 값이 있다.
+  var scope = "local"; // 이제 scope변수가 초기화되고 제대로 된 값이 있다.
   console.log(scope); // local출력
 }
 ```
