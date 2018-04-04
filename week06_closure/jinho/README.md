@@ -44,6 +44,7 @@ function outter() {
 }
 inner = outter();
 inner();
+
 ```
 
 ---
@@ -118,6 +119,7 @@ var hello1 = new Hello('A');
 var hello2 = new Hello('B');
 hello1.say(); // 'Hello, A'
 hello2.say(); // 'Hello, B'
+
 hello1._name = 'anonymous';
 hello1.say(); // 'Hello, anonymous' : private 제한이 되지 않음
 ```
@@ -131,6 +133,7 @@ function hello(name) {
 }
 var hello1 = hello('A');
 var hello2 = hello('B');
+console.log(hello1._name); // A
 hello1(); // 'Hello, A'
 hello2(); // 'Hello, B'
 ```
@@ -151,7 +154,7 @@ for (i = 0; i < 10; i++) {
 ```js
 var i;
 for (i = 0; i < 10; i++) {
-  (function(j) {
+  (function() {
     setTimeout(function() {
       console.log(j);
     }, 100);
@@ -174,12 +177,11 @@ for(var i=0; i < items.length; i++) {
 ```js
 var items = document.getElementsByTagName("li");
 for(var i=0; i < items.length; i++) {    
-  (function() {   // 새로운 스코프 선언
-    var idx = i; // 클로저가 접근할 변수 선언
+  (function(idx) {   // 새로운 스코프 선언
     items[i].onclick = function(event) {
       alert("My Sequence is " + (idx+1)); 
     }
-  })();
+  })(i);
 }
 ```
 
@@ -213,7 +215,7 @@ var object = {
     return findName();
   }
 }
-object.getName(); // my name is window.
+object.getName(); // my name is object.
 ```
 
 ---
